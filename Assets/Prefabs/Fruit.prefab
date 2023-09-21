@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8312561322576750093}
   - component: {fileID: 8312561322576750094}
   - component: {fileID: 8312561322576750095}
-  - component: {fileID: 2865181425024364282}
+  - component: {fileID: 4050770027905195036}
   m_Layer: 0
   m_Name: Fruit
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8312561322576750081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.962979, y: 1.3, z: 0.051779114}
+  m_LocalPosition: {x: -3, y: -6, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -124,7 +124,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2865181425024364282
+--- !u!114 &4050770027905195036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,7 +133,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8312561322576750081}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09ba37a8f54fd7245bbfd21043c8710f, type: 3}
+  m_Script: {fileID: 11500000, guid: 74ac72cf0615af849bf3c9eff2444e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruit: {fileID: 8312561322576750081}
