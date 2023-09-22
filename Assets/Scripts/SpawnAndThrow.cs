@@ -24,11 +24,15 @@ public class SpawnAndThrow : MonoBehaviour
 
     public void spawnNthrow()
     {
-        GameObject fruit = Instantiate(fruitPrefab);
-        SpriteRenderer sr = fruit.GetComponent<SpriteRenderer>();
-        Rigidbody2D rb = fruit.GetComponent<Rigidbody2D>();
-        spriteDecider = UnityEngine.Random.Range(1, 4);
+        GameObject gameObject = Instantiate(fruitPrefab);
 
+        //Putting Fruit class into fruit prefab, variables there can be used?
+        Fruit fruit = gameObject.GetComponent<Fruit>();
+
+        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
+        Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+        int spriteDecider = UnityEngine.Random.Range(1, 4);
+    
         switch (spriteDecider)
         {
             case 1:
@@ -38,6 +42,7 @@ public class SpawnAndThrow : MonoBehaviour
                 sr.sprite = banana;
                 break;
             case 3:
+                fruit.IsBomba = true;
                 sr.sprite = bomba;
                 break; 
         }
@@ -47,15 +52,15 @@ public class SpawnAndThrow : MonoBehaviour
         generatedY = -6;    
 
         //Instantiation of "fruit" gameObject
-        fruit.transform.position = new Vector3 (generatedX, generatedY, 0);
+        gameObject.transform.position = new Vector3 (generatedX, generatedY, 0);
 
         //if statement to determine which direction gameobject should be thrown
-        if (fruit.transform.position.x <= -7)
+        if (gameObject.transform.position.x <= -7)
         {
             vectorXRight = UnityEngine.Random.Range(generatedX, generatedX + 2);
             throwVector = new Vector3(vectorXRight, 0f, 0f) - new Vector3(generatedX, generatedY, 0f);
         }
-        else if (fruit.transform.position.x >= 7)
+        else if (gameObject.transform.position.x >= 7)
         { 
             vectorXLeft = UnityEngine.Random.Range(generatedX, generatedX - 2);
             throwVector = new Vector3(vectorXLeft, 0f, 0f) - new Vector3(generatedX, generatedY, 0f);

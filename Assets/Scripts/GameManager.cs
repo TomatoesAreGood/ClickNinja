@@ -5,7 +5,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 { 
     public static List<Fruit> fruitList;
+    public static List<Fruit> bombList;
     public SpawnAndThrow spawnAndThrow;
+    
 
     private void Awake()
     {
@@ -18,5 +20,8 @@ public class GameManager : MonoBehaviour
         {
             spawnAndThrow.spawnNthrow();
         }
-    } 
+    }
+
+    
+
 }

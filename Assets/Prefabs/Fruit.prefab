@@ -136,3 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ac72cf0615af849bf3c9eff2444e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  watermelon: {fileID: -1438128905, guid: 3efe3d6509cd0a8418cf40388b3669e0, type: 3}
+  banana: {fileID: 1915033337, guid: 8d6c732ca6e612b44ac6472789406ddd, type: 3}
+  bomba: {fileID: 756934181, guid: 52a414f29947c7448ac30a07c5104efb, type: 3}
