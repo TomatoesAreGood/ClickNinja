@@ -4,24 +4,42 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 { 
-    public static List<Fruit> fruitList;
-    public static List<Fruit> bombList;
+    public static List<Fruit> allObjects;
     public SpawnAndThrow spawnAndThrow;
+    public static GameObject gameObj;
+    public static bool IsGameOver;
     
-
     private void Awake()
     {
-        fruitList = new List<Fruit>();
+        allObjects = new List<Fruit>();
+        gameObj = this.GetComponent<GameObject>();
     }
 
     void Update()
     {
-        if (GameManager.fruitList.Count < 1)
+        if (!IsGameOver)
         {
-            spawnAndThrow.spawnNthrow();
+            if (allObjects.Count < 2)
+            {
+                spawnAndThrow.spawnNthrow();
+            }
         }
+        
     }
 
+    public static void GameOver()
+    {
+        IsGameOver = true;
+        List<Fruit>destroyedFruit = new List<Fruit>();
+        foreach (var fruit in allObjects)
+        {
+            destroyedFruit.Add(fruit);
+        }
+        foreach(var fruit in destroyedFruit) 
+        { Destroy(fruit.gameObject); }
+        Destroy(gameObj);
+        Debug.Log("Destroyed the thing");
+    }
     
 
 }
