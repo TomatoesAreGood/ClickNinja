@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 { 
@@ -38,8 +39,10 @@ public class GameManager : MonoBehaviour
         foreach(var fruit in destroyedFruit) 
         { Destroy(fruit.gameObject); }
         Destroy(gameObj);
-        Debug.Log("Destroyed the thing");
+        SceneManager.LoadScene("GameOver");
+        
     }
+    
     
 
 }
