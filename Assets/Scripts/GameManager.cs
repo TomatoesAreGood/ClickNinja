@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
         allObjects = new List<ThrowableObject>();
         gameObj = gameObject;
         score = 0;
+        if(lives == 0){
+            lives = 3;
+        }
         if(backwardsTime){
             time = 60;
         }else{

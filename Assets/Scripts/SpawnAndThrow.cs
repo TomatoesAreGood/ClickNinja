@@ -17,6 +17,9 @@ public class SpawnAndThrow : MonoBehaviour
     public Sprite watermelon;
     public Sprite banana;
     public Sprite bomba;    
+    public Sprite tomato;   
+    public Sprite pear; 
+
 
     public void spawnNthrow()
     {
@@ -27,7 +30,7 @@ public class SpawnAndThrow : MonoBehaviour
         SpriteRenderer sr = obj.GetComponent<SpriteRenderer>();
         Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
 
-        int spriteDecider = UnityEngine.Random.Range(1, 4);
+        int spriteDecider = UnityEngine.Random.Range(1, 6);
     
         switch (spriteDecider)
         {
@@ -41,6 +44,13 @@ public class SpawnAndThrow : MonoBehaviour
             case 3:
                 sr.sprite = watermelon;
                 break;
+            case 4:
+                sr.sprite = tomato;
+                break;
+             case 5:
+                sr.sprite = pear;
+                break;
+            
         }
         Toss(obj, rb);
     }
@@ -73,6 +83,9 @@ public class SpawnAndThrow : MonoBehaviour
         //throw vector calculation, throwForce Generation, Add force to gameObject
         throwForce = UnityEngine.Random.Range(0.75f, 1.20f);
         rb.AddForce(throwVector * 100 * throwForce);
+
+        int randnum = UnityEngine.Random.Range(100,360);
+        rb.angularVelocity = randnum;
     }
     
 

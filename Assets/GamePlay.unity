@@ -305,6 +305,7 @@ MonoBehaviour:
   watermelon: {fileID: -1438128905, guid: 3efe3d6509cd0a8418cf40388b3669e0, type: 3}
   banana: {fileID: 1915033337, guid: 8d6c732ca6e612b44ac6472789406ddd, type: 3}
   bomba: {fileID: 756934181, guid: 52a414f29947c7448ac30a07c5104efb, type: 3}
+  tomato: {fileID: 21300000, guid: 4a197f5e6d09d1542826df91dca208eb, type: 3}
 --- !u!1 &201549475
 GameObject:
   m_ObjectHideFlags: 0
