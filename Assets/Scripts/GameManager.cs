@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
@@ -35,6 +36,22 @@ public class GameManager : MonoBehaviour
         scoreText.UpdateScore(score);
         livesText.UpdateLives(lives);
         
+        List<Fruit>destroyedFruit = new List<Fruit>();
+
+        foreach (var obj in allObjects){
+            if(Blade.circleCollider.IsTouching(obj.GetComponent<CircleCollider2D>())){
+                destroyedFruit.Add(obj);
+            }
+        }
+        foreach (var obj in destroyedFruit){
+            if (obj.IsBomba){
+                GameOver();
+            }else{
+                score++;
+            }
+            Destroy(obj.gameObject);
+        }
+
         if(lives <= 0){
             GameOver();
         }
