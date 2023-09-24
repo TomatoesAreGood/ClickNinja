@@ -33,33 +33,19 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
-        // for (int i = 0; i < pausedObjects.Count; i++){
-        //     pausedObjects[i].gameObject.SetActive(true);
-        //     GameManager.allObjects.Add(pausedObjects[i]);
-        // }
-        // foreach(var obj in pausedObjects){
-        //     obj.gameObject.SetActive(true);
-        //     GameManager.allObjects.Add(obj);
-        // }
     }
 
     private void Pause(){
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
-        //  for (int i = 0; i < GameManager.allObjects.Count; i++){
-        //     GameManager.allObjects[i].gameObject.SetActive(false);
-        //     pausedObjects.Add(GameManager.allObjects[i]);
-        // }
-        // foreach(var obj in GameManager.allObjects){
-        //     obj.gameObject.SetActive(false);
-        //     pausedObjects.Add(obj);
-        // }
     }
     
     public void LoadMenu(){
         SceneManager.LoadScene("StartScreen");
-        Resume();
+        if(Time.timeScale == 0){
+            Resume();
+        }
     }
     public void Quit(){
         Debug.Log("quitted game");

@@ -16,6 +16,6 @@ public class LivesText : MonoBehaviour
     // Update is called once per frame
     public void UpdateLives(int lives)
     {
-        livesText.text = "Lives: " + lives;
+        livesText.text = "Lives:" + lives;
     }
 }

@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public static int score;
     public static float time;
     public static int lives;
+    public static bool backwardsTime = false;
+
     [SerializeField] public TimeText timeText;
     [SerializeField] public ScoreText scoreText;
     [SerializeField] public LivesText livesText;
@@ -24,14 +26,22 @@ public class GameManager : MonoBehaviour
         allObjects = new List<ThrowableObject>();
         gameObj = gameObject;
         score = 0;
-        lives = 3;
-        time = 0;
+        if(backwardsTime){
+            time = 60;
+        }else{
+            time = 0;
+        }
     }
     
 
     private void Update()
     {   
-        time += Time.deltaTime;
+        if (backwardsTime){
+            time -= Time.deltaTime;
+        }else{
+            time += Time.deltaTime;
+        }
+
         timeText.UpdateTime(time);
         scoreText.UpdateScore(score);
         livesText.UpdateLives(lives);
@@ -55,6 +65,11 @@ public class GameManager : MonoBehaviour
 
         if(lives <= 0){
             GameOver();
+        }
+        if (backwardsTime){
+            if(time <= 0){
+                GameOver();
+            }
         }
 
         if (!IsGameOver)
