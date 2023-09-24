@@ -16,6 +16,6 @@ public class TimeText : MonoBehaviour
     // Update is called once per frame
     public void UpdateTime(float time)
     {
-        timerText.text = "" + (int)time;
+        timerText.text = "Time: " + (int)time;
     }
 }

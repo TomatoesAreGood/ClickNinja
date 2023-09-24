@@ -14,14 +14,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] public ScoreText scoreText;
     [SerializeField] public LivesText livesText;
 
-    public static List<Fruit> allObjects;
+    public static List<ThrowableObject> allObjects;
     public SpawnAndThrow spawnAndThrow;
     public static GameObject gameObj;
     public static bool IsGameOver;
     
     private void Awake()
     {
-        allObjects = new List<Fruit>();
+        allObjects = new List<ThrowableObject>();
         gameObj = gameObject;
         score = 0;
         lives = 3;
@@ -36,11 +36,12 @@ public class GameManager : MonoBehaviour
         scoreText.UpdateScore(score);
         livesText.UpdateLives(lives);
         
-        List<Fruit>destroyedFruit = new List<Fruit>();
-
-        foreach (var obj in allObjects){
-            if(Blade.circleCollider.IsTouching(obj.GetComponent<CircleCollider2D>())){
-                destroyedFruit.Add(obj);
+        List<ThrowableObject>destroyedFruit = new List<ThrowableObject>();
+        if(Time.timeScale != 0){
+            foreach (var obj in allObjects){
+                if(Blade.circleCollider.IsTouching(obj.GetComponent<CircleCollider2D>())){
+                    destroyedFruit.Add(obj);
+                }
             }
         }
         foreach (var obj in destroyedFruit){
@@ -58,9 +59,9 @@ public class GameManager : MonoBehaviour
 
         if (!IsGameOver)
         {
-            if (allObjects.Count < 2)
+            if (allObjects.Count < 3)
             {
-                spawnAndThrow.spawnNthrow();
+               spawnAndThrow.spawnNthrow();
             }
         }
         
@@ -69,7 +70,7 @@ public class GameManager : MonoBehaviour
     public static void GameOver()
     {
         IsGameOver = true;
-        List<Fruit>destroyedFruit = new List<Fruit>();
+        List<ThrowableObject>destroyedFruit = new List<ThrowableObject>();
         foreach (var fruit in allObjects)
         {
             destroyedFruit.Add(fruit);

@@ -5,7 +5,7 @@ using System.Net;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Fruit : MonoBehaviour
+public class ThrowableObject : MonoBehaviour
 {
     public bool IsBomba = false;
 
@@ -21,18 +21,21 @@ public class Fruit : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (IsBomba)
-        {
-            Debug.Log("You die");
-            GameManager.GameOver();
-        }else{
-            GameManager.score++;
+        if(Time.timeScale != 0){
+            if (IsBomba)
+            {
+                Debug.Log("You die");
+                GameManager.GameOver();
+            }else{
+                GameManager.score++;
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 
     void Update()
     {
+        
         if (transform.position.y <= -7)
         {
             if(!IsBomba){

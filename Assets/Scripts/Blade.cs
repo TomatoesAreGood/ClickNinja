@@ -34,6 +34,8 @@ public class Blade : MonoBehaviour
             rb.position = cam.ScreenToWorldPoint(Input.mousePosition);
             transform.position = cam.ScreenToWorldPoint(Input.mousePosition);
             circleCollider.enabled = true;
+        }else{
+            circleCollider.enabled = false;
         }
         Vector3 pos = transform.position;
         pos.z = 0;
