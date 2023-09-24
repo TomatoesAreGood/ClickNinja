@@ -18,7 +18,9 @@ public class SpawnAndThrow : MonoBehaviour
     public Sprite banana;
     public Sprite bomba;    
     public Sprite tomato;   
-    public Sprite pear; 
+    public Sprite pear;
+    public Sprite pom;
+    public Sprite avacado;
 
 
     public void spawnNthrow()
@@ -30,7 +32,7 @@ public class SpawnAndThrow : MonoBehaviour
         SpriteRenderer sr = obj.GetComponent<SpriteRenderer>();
         Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
 
-        int spriteDecider = UnityEngine.Random.Range(1, 6);
+        int spriteDecider = UnityEngine.Random.Range(1, 8);
     
         switch (spriteDecider)
         {
@@ -50,7 +52,14 @@ public class SpawnAndThrow : MonoBehaviour
              case 5:
                 sr.sprite = pear;
                 break;
-            
+            case 6:
+                sr.sprite = pom;
+                break;
+            case 7:
+                sr.sprite = avacado;
+                break;
+
+
         }
         Toss(obj, rb);
     }
