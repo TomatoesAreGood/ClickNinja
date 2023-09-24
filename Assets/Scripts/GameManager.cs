@@ -2,9 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 { 
+    public static int score;
+    public static float time;
+    public static int lives;
+    [SerializeField] public TimeText timeText;
+    [SerializeField] public ScoreText scoreText;
+    [SerializeField] public LivesText livesText;
+
     public static List<Fruit> allObjects;
     public SpawnAndThrow spawnAndThrow;
     public static GameObject gameObj;
@@ -13,11 +21,24 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         allObjects = new List<Fruit>();
-        gameObj = this.GetComponent<GameObject>();
+        gameObj = gameObject;
+        score = 0;
+        lives = 3;
+        time = 0;
     }
+    
 
-    void Update()
-    {
+    private void Update()
+    {   
+        time += Time.deltaTime;
+        timeText.UpdateTime(time);
+        scoreText.UpdateScore(score);
+        livesText.UpdateLives(lives);
+        
+        if(lives <= 0){
+            GameOver();
+        }
+
         if (!IsGameOver)
         {
             if (allObjects.Count < 2)
@@ -37,7 +58,9 @@ public class GameManager : MonoBehaviour
             destroyedFruit.Add(fruit);
         }
         foreach(var fruit in destroyedFruit) 
-        { Destroy(fruit.gameObject); }
+        { 
+            Destroy(fruit.gameObject); 
+        }
         Destroy(gameObj);
         SceneManager.LoadScene("GameOver");
         

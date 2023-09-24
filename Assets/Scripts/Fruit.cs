@@ -16,28 +16,31 @@ public class Fruit : MonoBehaviour
 
     void OnDisable()
     {
-            GameManager.allObjects.Remove(this);
+        GameManager.allObjects.Remove(this);
     }
-        // Update is called once per frame
 
-        void OnMouseDown()
+    void OnMouseDown()
+    {
+        if (IsBomba)
         {
-            if (IsBomba)
-            {
-                Debug.Log("You die");
-                GameManager.GameOver();
+            Debug.Log("You die");
+            GameManager.GameOver();
+        }else{
+            GameManager.score++;
+        }
+        Destroy(gameObject);
+    }
+
+    void Update()
+    {
+        if (transform.position.y <= -7)
+        {
+            if(!IsBomba){
+                GameManager.lives--;
             }
+            
             Destroy(gameObject);
         }
-
-
-
-        void Update()
-        {
-            if (transform.position.y <= -7)
-            {
-                Destroy(gameObject);
-            }
-        }
+    }
 
 }
