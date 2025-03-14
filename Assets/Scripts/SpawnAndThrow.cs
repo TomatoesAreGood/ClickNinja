@@ -66,8 +66,8 @@ public class SpawnAndThrow : MonoBehaviour
     
     private void Toss(GameObject obj, Rigidbody2D rb){
           //Generation of x,y and vector x coordinates
-        generatedX = UnityEngine.Random.Range(-12, 12); ;
-        generatedY = -6;    
+        generatedX = UnityEngine.Random.Range(-9, 9); ;
+        generatedY = -5;    
 
         //Instantiation of "fruit" gameObject
         obj.transform.position = new Vector3 (generatedX, generatedY, 0);
